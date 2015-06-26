@@ -86,6 +86,8 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
 		//_eventsCache.delegate = self;
 	
 		_bgQueue = dispatch_queue_create("MGCDayPlannerEKViewController.bgQueue", NULL);
+		
+		[self checkEventStoreAccessForCalendar];
 	}
 	return self;
 }
@@ -330,6 +332,59 @@ static NSString* const EventCellReuseIdentifier = @"EventCellReuseIdentifier";
 		return YES;
 	}
 	return NO;
+}
+
+#pragma mark - Calendar access authorization
+
+- (void)checkEventStoreAccessForCalendar
+{
+	EKAuthorizationStatus status = [EKEventStore authorizationStatusForEntityType:EKEntityTypeEvent];
+
+	switch (status) {
+		case EKAuthorizationStatusAuthorized:
+			[self accessGrantedForCalendar];
+			break;
+
+		case EKAuthorizationStatusNotDetermined:
+			[self requestCalendarAccess];
+			break;
+			
+		case EKAuthorizationStatusDenied:
+		case EKAuthorizationStatusRestricted:
+			[self accessDeniedForCalendar];
+	}
+}
+
+// Prompt the user for access to their Calendar
+- (void)requestCalendarAccess
+{
+	[self.eventStore requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError *error) {
+		 if (granted) {
+			 MGCDayPlannerEKViewController * __weak weakSelf = self;
+			 dispatch_async(dispatch_get_main_queue(), ^{
+				 [weakSelf accessGrantedForCalendar];
+			 });
+		 }
+	}];
+}
+
+// This method is called when the user has granted permission to Calendar
+- (void)accessGrantedForCalendar
+{
+	self.accessGranted = YES;
+	
+	NSArray *calendars = [self.eventStore calendarsForEntityType:EKEntityTypeEvent];
+	self.visibleCalendars = [NSSet setWithArray:calendars];
+	
+	[self reloadEvents];
+}
+
+- (void)accessDeniedForCalendar
+{
+	NSString *title = NSLocalizedString(@"Warning", nil);
+	NSString *msg = NSLocalizedString(@"Access to the calendar was not authorized", nil);
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:msg delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+	[alert show];
 }
 
 #pragma mark - MGCDayPlannerViewDataSource

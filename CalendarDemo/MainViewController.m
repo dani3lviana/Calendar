@@ -26,8 +26,6 @@ typedef enum : NSUInteger
 @property (nonatomic, strong) NSDateFormatter *dateFormatter;
 @property (nonatomic) EKCalendarChooser *calendarChooser;
 
-@property (nonatomic, strong) NSArray *events;
-
 @end
 
 
@@ -116,7 +114,7 @@ typedef enum : NSUInteger
 		}
 		case CalendarViewMonthType:
 		{
-			MonthViewController *monthController = [[MonthViewController alloc] initWithEvents:self.events];
+			MonthViewController *monthController = [[MonthViewController alloc]initWithEventStore:self.eventStore];
 			monthController.calendar = self.calendar;
 			monthController.delegate = self;
 			controller = monthController;
