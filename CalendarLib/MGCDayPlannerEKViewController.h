@@ -40,8 +40,6 @@
 
 /** designated initializer */
 - (instancetype)initWithEventStore:(EKEventStore*)eventStore;
-- (void)accessGrantedForCalendar;
-- (void)accessDeniedForCalendar;
 - (void)reloadEvents;
 
 @end

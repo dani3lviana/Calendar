@@ -28,7 +28,6 @@
 //  SOFTWARE.
 //
 
-#import <EventKit/EventKit.h>
 #import "MGCMonthPlannerViewController.h"
 
 
@@ -37,11 +36,9 @@
 @property (nonatomic) NSCalendar *calendar;
 @property (nonatomic) NSSet *visibleCalendars;
 @property (nonatomic) UIPopoverController *eventPopover;
-@property (nonatomic) EKEventStore *eventStore;
+@property (nonatomic) NSArray *events;
 
 /** designated initializer */
-- (instancetype)initWithEventStore:(EKEventStore*)eventStore;
-- (void)accessGrantedForCalendar;
-- (void)accessDeniedForCalendar;
+- (instancetype)initWithEvents:(NSArray *)events;
 
 @end

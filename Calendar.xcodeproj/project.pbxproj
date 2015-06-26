@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		658ADADE1B3AEB4300868F58 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 658ADADD1B3AEB4300868F58 /* Event.m */; };
 		720041BA1879B2B600F3C497 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 720041B91879B2B600F3C497 /* Settings.bundle */; };
 		7203643C1A5567AC00BA2DCA /* OSCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 7203643B1A5567AC00BA2DCA /* OSCache.m */; };
 		721CA1B41A9382990083F41A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 721CA1B21A9382990083F41A /* Localizable.strings */; };
@@ -41,8 +42,6 @@
 		72B5D90D180D73E0004ADB86 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72B5D8F5180D73E0004ADB86 /* UIKit.framework */; };
 		72B5D915180D73E0004ADB86 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 72B5D913180D73E0004ADB86 /* InfoPlist.strings */; };
 		72B5D917180D73E0004ADB86 /* CalendarTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 72B5D916180D73E0004ADB86 /* CalendarTests.m */; };
-		72B5D922180D73F3004ADB86 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72B5D920180D73F3004ADB86 /* EventKit.framework */; };
-		72B5D923180D73F3004ADB86 /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72B5D921180D73F3004ADB86 /* EventKitUI.framework */; };
 		72B5D928180D7476004ADB86 /* main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 72B5D927180D7476004ADB86 /* main.storyboard */; };
 		72B5D92E180D7840004ADB86 /* MGCEventCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 72B5D92D180D7840004ADB86 /* MGCEventCell.m */; };
 		72B5D953180D9A93004ADB86 /* MGCTimedEventsViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 72B5D952180D9A93004ADB86 /* MGCTimedEventsViewLayout.m */; };
@@ -72,6 +71,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		658ADADC1B3AEB4300868F58 /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
+		658ADADD1B3AEB4300868F58 /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
 		720041B91879B2B600F3C497 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		7203643A1A5567AC00BA2DCA /* OSCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSCache.h; sourceTree = "<group>"; };
 		7203643B1A5567AC00BA2DCA /* OSCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSCache.m; sourceTree = "<group>"; };
@@ -172,8 +173,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				72B5D922180D73F3004ADB86 /* EventKit.framework in Frameworks */,
-				72B5D923180D73F3004ADB86 /* EventKitUI.framework in Frameworks */,
 				72B5D8F4180D73E0004ADB86 /* CoreGraphics.framework in Frameworks */,
 				72B5D8F6180D73E0004ADB86 /* UIKit.framework in Frameworks */,
 				72B5D8F2180D73E0004ADB86 /* Foundation.framework in Frameworks */,
@@ -193,6 +192,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		658ADADB1B3AEB1B00868F58 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				658ADADC1B3AEB4300868F58 /* Event.h */,
+				658ADADD1B3AEB4300868F58 /* Event.m */,
+			);
+			name = Entities;
+			sourceTree = "<group>";
+		};
 		723345D81A3BA75300BAE7A9 /* Events view */ = {
 			isa = PBXGroup;
 			children = (
@@ -391,6 +399,7 @@
 		72CD8BAA18228A7500F12339 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				658ADADB1B3AEB1B00868F58 /* Entities */,
 				721CA1B21A9382990083F41A /* Localizable.strings */,
 				7203643A1A5567AC00BA2DCA /* OSCache.h */,
 				7203643B1A5567AC00BA2DCA /* OSCache.m */,
@@ -521,6 +530,7 @@
 				7248241818D36DFE0067D0D7 /* MGCYearCalendarMonthHeaderView.m in Sources */,
 				72271A521815C33600DE96FE /* MGCDateRange.m in Sources */,
 				72E8D25918FC474500024582 /* MGCReusableObjectQueue.m in Sources */,
+				658ADADE1B3AEB4300868F58 /* Event.m in Sources */,
 				72EF07FF1A3D9DF8005699CA /* WeekViewController.m in Sources */,
 				72EF081D1A3EDF09005699CA /* OrderedDictionary.m in Sources */,
 				72B5D953180D9A93004ADB86 /* MGCTimedEventsViewLayout.m in Sources */,
